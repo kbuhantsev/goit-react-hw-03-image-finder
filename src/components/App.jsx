@@ -30,7 +30,7 @@ class App extends Component {
       }
       this.setState({
         pictures: hits,
-        loadMoreEnabled: hits.length < totalHits || hits.length,
+        loadMoreEnabled: hits.length < totalHits,
       });
     } catch (error) {
       Notify.failure(error.message);
