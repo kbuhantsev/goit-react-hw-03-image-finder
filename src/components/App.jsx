@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
-import Button from './Button/Button';
-import Container from './Container';
-
 import GlobalStyles from './GlobalStyles';
-import ImageGallery from './ImageGallery/ImageGallery';
 
-import Searchbar from './Searchbar/Searchbar';
-import ApiPixabay from './utils/ApiPixabay';
+import Searchbar from './Searchbar';
+import Button from './Button';
+import Container from './Container';
+import ImageGallery from './ImageGallery';
+
+import ApiPixabay from './utils';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const API = new ApiPixabay();
@@ -25,13 +25,15 @@ class App extends Component {
     API.resetPage();
     try {
       const { hits, totalHits } = await API.getImages();
-      Notify.warning('Sorry, no results by ' + text);
+      if (!hits.length) {
+        Notify.warning('Sorry, no results by ' + text);
+      }
       this.setState({
         pictures: hits,
         loadMoreEnabled: hits.length < totalHits || hits.length,
       });
     } catch (error) {
-      console.log(error);
+      Notify.failure(error.message);
     } finally {
       this.setState({ isLoading: false });
     }

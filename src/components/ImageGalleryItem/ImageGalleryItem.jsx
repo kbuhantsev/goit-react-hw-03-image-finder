@@ -1,4 +1,4 @@
-import Modal from 'components/Modal/Modal';
+import Modal from '../Modal';
 import { Component } from 'react';
 import { LiStyled, ImgStyled } from './ImageGalleryItem.styled';
 
@@ -7,12 +7,12 @@ class ImageGalleryItem extends Component {
     isModalOpen: false,
   };
 
-  closeModal = () => {
-    this.setState({ isModalOpen: false });
-  };
-
-  openModal = () => {
-    this.setState({ isModalOpen: true });
+  toggleModal = () => {
+    this.setState(prevState => {
+      return {
+        isModalOpen: !prevState.isModalOpen,
+      };
+    });
   };
 
   render() {
@@ -23,13 +23,13 @@ class ImageGalleryItem extends Component {
       <>
         <LiStyled>
           <ImgStyled
+            loading="lazy"
             src={webformatURL}
             alt={tags}
-            onClick={this.openModal}
-            loading="lazy"
+            onClick={this.toggleModal}
           />
         </LiStyled>
-        {isModalOpen && <Modal item={item} onClose={this.closeModal} />}
+        {isModalOpen && <Modal item={item} onClose={this.toggleModal} />}
       </>
     );
   }

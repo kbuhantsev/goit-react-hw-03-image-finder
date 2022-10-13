@@ -1,5 +1,5 @@
 import UlStyled from './ImageGallery.styled';
-import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
+import ImageGalleryItem from '../ImageGalleryItem';
 
 function ImageGallery({ galleryItems }) {
   return (
