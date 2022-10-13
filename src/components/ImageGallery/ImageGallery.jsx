@@ -4,8 +4,8 @@ import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 function ImageGallery({ galleryItems }) {
   return (
     <UlStyled>
-      {galleryItems.map(({ preview, description }, idx) => (
-        <ImageGalleryItem preview={preview} description={description} />
+      {galleryItems.map(item => (
+        <ImageGalleryItem key={item.id} item={item} />
       ))}
     </UlStyled>
   );

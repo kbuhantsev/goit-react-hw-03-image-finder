@@ -35,7 +35,6 @@ const SearchBtnStyled = styled.button`
   width: 48px;
   height: 48px;
   border: 0;
-  background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: center;
@@ -49,18 +48,6 @@ const SearchBtnStyled = styled.button`
   }
 `;
 
-const SearchBtnLabelStyled = styled.span`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  clip-path: inset(50%);
-  border: 0;
-`;
-
 const SearchInputStyled = styled(Field)`
   display: inline-block;
   width: 100%;
@@ -70,6 +57,7 @@ const SearchInputStyled = styled(Field)`
   outline: none;
   padding-left: 4px;
   padding-right: 4px;
+  line-height: 1.3em;
 
   &::placeholder {
     font: inherit;
@@ -85,7 +73,6 @@ export {
   HeaderStyled,
   SearchFormStyled,
   SearchBtnStyled,
-  SearchBtnLabelStyled,
   SearchInputStyled,
   ErrorMessageStyled,
 };
