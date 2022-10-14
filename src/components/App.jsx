@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { ThreeDots } from 'react-loader-spinner';
 import GlobalStyles from './GlobalStyles';
 
 import Searchbar from './Searchbar';
-import Button from './Button';
 import Container from './Container';
 import ImageGallery from './ImageGallery';
+import Loader from './Loader';
+import Button from './Button';
 
 import ApiPixabay from './utils';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
@@ -71,14 +71,7 @@ class App extends Component {
         <Container>
           <Searchbar onSearch={this.onSearch} />
           <ImageGallery galleryItems={pictures} />
-          <ThreeDots
-            height="60"
-            width="60"
-            radius="6"
-            color="#3f51b5"
-            visible={isLoading}
-            wrapperStyle={{ justifyContent: 'center' }}
-          />
+          <Loader isLoading={isLoading} />
           <Button
             enabled={loadMoreEnabled}
             onClick={this.onLoadMoreButtonClick}
@@ -88,4 +81,5 @@ class App extends Component {
     );
   }
 }
+
 export default App;
