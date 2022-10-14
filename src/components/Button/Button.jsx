@@ -1,8 +1,8 @@
 import ButtonStyled from './Button.styled';
 
-function Button({ enabled, onClick }) {
+function Button({ onClick }) {
   return (
-    <ButtonStyled type="button" enabled={enabled} onClick={onClick}>
+    <ButtonStyled type="button" onClick={onClick}>
       Load more
     </ButtonStyled>
   );

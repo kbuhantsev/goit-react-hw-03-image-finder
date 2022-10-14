@@ -70,12 +70,9 @@ class App extends Component {
         <GlobalStyles />
         <Container>
           <Searchbar onSearch={this.onSearch} />
-          <ImageGallery galleryItems={pictures} />
-          <Loader isLoading={isLoading} />
-          <Button
-            enabled={loadMoreEnabled}
-            onClick={this.onLoadMoreButtonClick}
-          />
+          {pictures.length && <ImageGallery galleryItems={pictures} />}
+          {isLoading && <Loader />}
+          {loadMoreEnabled && <Button onClick={this.onLoadMoreButtonClick} />}
         </Container>
       </>
     );
