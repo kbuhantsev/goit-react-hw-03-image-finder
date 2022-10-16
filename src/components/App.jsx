@@ -40,7 +40,7 @@ class App extends Component {
   };
 
   onLoadMoreButtonClick = async () => {
-    this.setState({ isLoading: false });
+    this.setState({ isLoading: true });
     try {
       const { hits, totalHits } = await API.getImages();
       this.setState(state => ({
