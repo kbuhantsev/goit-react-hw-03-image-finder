@@ -43,10 +43,13 @@ class App extends Component {
     this.setState({ isLoading: true });
     try {
       const { hits, totalHits } = await API.getImages();
-      this.setState(state => ({
-        pictures: [...state.pictures, ...hits],
-        loadMoreEnabled: state.pictures.length + hits.length < totalHits,
-      }));
+      this.setState(
+        state => ({
+          pictures: [...state.pictures, ...hits],
+          loadMoreEnabled: state.pictures.length + hits.length < totalHits,
+        }),
+        this.scrollDown
+      );
     } catch (error) {
       console.log(error);
     } finally {
@@ -54,14 +57,12 @@ class App extends Component {
     }
   };
 
-  componentDidUpdate(_, prevState) {
-    if (prevState.pictures.length !== 0) {
-      window.scrollBy({
-        top: window.screen.availHeight / 4,
-        behavior: 'smooth',
-      });
-    }
-  }
+  scrollDown = () => {
+    window.scrollBy({
+      top: window.screen.availHeight / 4,
+      behavior: 'smooth',
+    });
+  };
 
   render() {
     const { pictures, loadMoreEnabled, isLoading } = this.state;
