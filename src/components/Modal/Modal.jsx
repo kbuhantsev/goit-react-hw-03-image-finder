@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { OverlayStyled, ModalStyled } from './Modal.styled';
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 
 const modalRoot = document.getElementById('modal-root');
 class Modal extends Component {
@@ -36,5 +37,13 @@ class Modal extends Component {
     );
   }
 }
+
+Modal.propTypes = {
+  item: PropTypes.shape({
+    largeImageURL: PropTypes.string,
+    tags: PropTypes.string,
+  }),
+  onClose: PropTypes.func,
+};
 
 export default Modal;

@@ -9,6 +9,7 @@ import {
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { FaSearch } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 const schema = Yup.object().shape({
   input: Yup.string().min(2, 'Min 2 letters!').required('Required!'),
@@ -44,5 +45,9 @@ function Searchbar({ onSearch }) {
     </HeaderStyled>
   );
 }
+
+Searchbar.propTypes = {
+  onSearch: PropTypes.func,
+};
 
 export default Searchbar;

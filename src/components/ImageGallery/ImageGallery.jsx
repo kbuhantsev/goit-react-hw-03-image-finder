@@ -1,5 +1,6 @@
 import UlStyled from './ImageGallery.styled';
 import ImageGalleryItem from '../ImageGalleryItem';
+import PropTypes from 'prop-types';
 
 function ImageGallery({ galleryItems }) {
   return (
@@ -10,5 +11,9 @@ function ImageGallery({ galleryItems }) {
     </UlStyled>
   );
 }
+
+ImageGallery.propTypes = {
+  galleryItems: PropTypes.array,
+};
 
 export default ImageGallery;

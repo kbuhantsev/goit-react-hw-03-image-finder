@@ -8,7 +8,8 @@ import Loader from './Loader';
 import Button from './Button';
 
 import ApiPixabay from './utils';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 const API = new ApiPixabay();
 
@@ -26,14 +27,14 @@ class App extends Component {
     try {
       const { hits, totalHits } = await API.getImages();
       if (!hits.length) {
-        Notify.warning('Sorry, no results by ' + text);
+        toast.warning('Sorry, no results by ' + text, { autoClose: 2000 });
       }
       this.setState({
         pictures: hits,
         loadMoreEnabled: hits.length < totalHits,
       });
     } catch (error) {
-      Notify.failure(error.message);
+      toast.error(error.message, { autoClose: 2000 });
     } finally {
       this.setState({ isLoading: false });
     }
@@ -51,7 +52,7 @@ class App extends Component {
         this.scrollDown
       );
     } catch (error) {
-      console.log(error);
+      toast.error(error.message, { autoClose: 2000 });
     } finally {
       this.setState({ isLoading: false });
     }
@@ -74,6 +75,7 @@ class App extends Component {
           {pictures.length && <ImageGallery galleryItems={pictures} />}
           {isLoading && <Loader />}
           {loadMoreEnabled && <Button onClick={this.onLoadMoreButtonClick} />}
+          <ToastContainer />
         </Container>
       </>
     );

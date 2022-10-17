@@ -1,6 +1,7 @@
 import Modal from '../Modal';
 import { Component } from 'react';
 import { LiStyled, ImgStyled } from './ImageGalleryItem.styled';
+import PropTypes from 'prop-types';
 
 class ImageGalleryItem extends Component {
   state = {
@@ -34,5 +35,12 @@ class ImageGalleryItem extends Component {
     );
   }
 }
+
+ImageGalleryItem.propTypes = {
+  item: PropTypes.shape({
+    webformatURL: PropTypes.string,
+    tags: PropTypes.string,
+  }),
+};
 
 export default ImageGalleryItem;
