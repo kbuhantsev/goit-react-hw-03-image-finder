@@ -82,7 +82,7 @@ class App extends Component {
     if (status === Status.IDLE) {
       markup = (
         <Box as="h2" margin="0 auto">
-          <p>Давайте начнем что-то искать 👀</p>
+          <p>Let`s start to search images 👀</p>
         </Box>
       );
     } else if (status === Status.PENDING) {
@@ -102,7 +102,7 @@ class App extends Component {
     } else if (status === Status.REJECTED) {
       markup = (
         <Box as="h2" margin="0 auto">
-          <p>❗Что-то пошло не так, попробуйте еще раз</p>
+          <p>❗Oooops, try again❗</p>
         </Box>
       );
     }
